@@ -18,9 +18,6 @@ export default function Lobby() {
   // state to count the correct answers
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
-  //state that make an animation on a button
-  const [shake, setShake] = useState(false);
-
   // state to know if the game is over
   const [endgame, setEndGame] = useState(false);
 
@@ -122,8 +119,6 @@ export default function Lobby() {
     if (isAllSelected && !endgame) {
       countCorrectAnswers();
       setEndGame(true);
-    } else {
-      animate();
     }
   }
 
@@ -186,7 +181,6 @@ export default function Lobby() {
             {!endgame && (
               <button
                 onClick={submitAnswers}
-                className={`quiz-button ${shake ? `shake` : null}`}
               >
                 Check Answers
               </button>
