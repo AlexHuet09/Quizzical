@@ -177,7 +177,11 @@ export default function Lobby() {
         <div className="quiz-container">
           {list}
           <div className="quiz-footer">
-            {!endgame && <button onClick={submitAnswers}>Check Answers</button>}
+            {!endgame && (
+              <button className="quiz-button" onClick={submitAnswers}>
+                Check Answers
+              </button>
+            )}
             {endgame && (
               <div className="endgame-button-wrap">
                 <p className="score">
