@@ -16,7 +16,6 @@ export default function Lobby() {
   });
 
   // state to count the correct answers
-  const [correctAnswers, setCorrectAnswers] = useState(0);
 
   // state to know if the game is over
   const [endgame, setEndGame] = useState(false);
@@ -112,7 +111,7 @@ export default function Lobby() {
     return correct;
   }
 
-  const correctAnswersX = countCorrectAnswers();
+  let correctAnswers = countCorrectAnswers();
 
   //function that run when you want to submit your answer and endgame
   function submitAnswers() {
@@ -132,7 +131,7 @@ export default function Lobby() {
       type: "multiple",
       number: 5,
     });
-    setCorrectAnswers(0);
+    correctAnswers = 0;
   }
 
   // submit form function
@@ -178,17 +177,11 @@ export default function Lobby() {
         <div className="quiz-container">
           {list}
           <div className="quiz-footer">
-            {!endgame && (
-              <button
-                onClick={submitAnswers}
-              >
-                Check Answers
-              </button>
-            )}
+            {!endgame && <button onClick={submitAnswers}>Check Answers</button>}
             {endgame && (
               <div className="endgame-button-wrap">
                 <p className="score">
-                  You have {correctAnswersX}/{data.length} correct answers
+                  You have {correctAnswers}/{data.length} correct answers
                 </p>
                 <button
                   onClick={playAgain}
